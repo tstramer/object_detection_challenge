@@ -1,0 +1,12 @@
+jupyter
+lxml
+matplotlib
+moviepy
+numpy
+opencv-python==3.2.0.8
+pillow
+s3cmd
+scipy
+tensorflow
+tensorflow-gpu
+xmldict

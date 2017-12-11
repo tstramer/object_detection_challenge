@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# cd into the directory of this script in case of relative path deps
+cd "$(dirname "$0")"
+
+case "$1" in
+        setup_docker)
+            set -x; 
+            mkdir -p `pwd`/docker_output;
+            sudo nvidia-docker build -t skycatch-challenge-tstramer .;
+            ;;
+        attach_docker)
+            set -x; 
+            sudo nvidia-docker run -it --entrypoint /bin/bash -v `pwd`/docker_output:/app/docker_output skycatch-challenge-tstramer
+            ;;
+        predict)
+            set -x; 
+            python3.5 src/predict_bounding_boxes.py --in_path $2 --out_path $3 --model_path models/faster_rcnn_resnet_101/frozen_inference_graph.pb --labels_path data/label_map.pbtxt --num_classes 3
+            ;;
+        predict_custom)
+            set -x; 
+            python3.5 src/predict_bounding_boxes.py --in_path $2 --out_path $3 --model_path $4/frozen_inference_graph.pb --labels_path data/label_map.pbtxt --num_classes 3
+            ;;
+        train)
+            set -x; 
+            python3.5 src/train.py --logtostderr --pipeline_config_path $2 --train_dir $3
+            ;;
+        create_graph)
+            set -x; 
+            python3.5 src/create_inference_graph.py --input_type image_tensor --trained_checkpoint_prefix $2 --output_directory $3 --pipeline_config_path $4
+            ;;
+        *)
+            echo $"Usage: $0 {setup_docker|attach_docker|predict|predict_custom|train|create_graph}"
+            exit 1
+esac
