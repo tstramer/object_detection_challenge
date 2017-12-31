@@ -4,8 +4,8 @@
 pip3 install -r requirements.txt
 
 # Download data & models from s3
-wget http://skycatch-challenge.s3.amazonaws.com/data.zip
-wget http://skycatch-challenge.s3.amazonaws.com/models.zip
+wget http://object-detection-challenge.s3.amazonaws.com/data.zip
+wget http://object-detection-challenge.s3.amazonaws.com/models.zip
 unzip data.zip
 unzip models.zip
 

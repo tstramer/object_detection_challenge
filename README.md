@@ -1,4 +1,4 @@
-# Skycatch Coding Challenge
+# Object Detection Coding Challenge
 
 ## Introduction
 
@@ -22,7 +22,7 @@ Here is a doc defining an architecture for putting this code into production: ht
 
 ### Install dependencies
 1. Install docker. See https://docs.docker.com/engine/getstarted/step_one/ for instructions.
-2. Clone this repository: `git clone https://github.com/tstramer/skycatch_challenge.git`
+2. Clone this repository: `git clone https://github.com/tstramer/object_detection_challenge.git`
 
 ### Build and run the app
 1. Open a command-line terminal and cd into the root of the project
@@ -48,7 +48,7 @@ Any files put in the `docker_output` folder will automatically be synced with th
 To predict the bounding boxes for an entire movie:
 
 ```shell
-wget http://skycatch-challenge.s3.amazonaws.com/movies/movie9.avi
+wget http://object-detection-challenge.s3.amazonaws.com/movies/movie9.avi
 ./dev predict movie9.avi docker_output/movie9_labeled.avi
 ```
 
@@ -61,7 +61,7 @@ I used the weights of pretrained models trained on various datasets (COCO, OpenI
 To download the pretrained models used for training the models included with this project, run the following from the project root:
 
 ```shell
-wget http://skycatch-challenge.s3.amazonaws.com/pretrained_models.zip
+wget http://object-detection-challenge.s3.amazonaws.com/pretrained_models.zip
 unzip pretrained_models.zip
 ```
 

@@ -7,11 +7,11 @@ case "$1" in
         setup_docker)
             set -x; 
             mkdir -p `pwd`/docker_output;
-            sudo nvidia-docker build -t skycatch-challenge-tstramer .;
+            sudo nvidia-docker build -t object-detection-challenge-tstramer .;
             ;;
         attach_docker)
             set -x; 
-            sudo nvidia-docker run -it --entrypoint /bin/bash -v `pwd`/docker_output:/app/docker_output skycatch-challenge-tstramer
+            sudo nvidia-docker run -it --entrypoint /bin/bash -v `pwd`/docker_output:/app/docker_output object-detection-challenge-tstramer
             ;;
         predict)
             set -x; 
